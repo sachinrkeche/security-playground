@@ -15,7 +15,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-
 public class DBBankUserDetailService implements UserDetailsService {
 
     private final CustomerRepository customerRepository;
