@@ -2,6 +2,7 @@ package com.spring.securityplayground.config;
 
 import com.spring.securityplayground.filter.JWTTokenGeneratorFilter;
 import com.spring.securityplayground.filter.JWTTokenValidatorFilter;
+import com.spring.securityplayground.filter.RequestValidationFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,6 +47,7 @@ public class SecurityConfig {
 
                 .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
                 .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards").authenticated()
                         .requestMatchers("/notices", "/contact", "/error", "/register", "/apiLogin","/user").permitAll());
