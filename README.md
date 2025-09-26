@@ -1,2 +1,2 @@
 # security-playground
-Spring Security project 
+Spring Security project with JWT implementation 
